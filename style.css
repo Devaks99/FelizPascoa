@@ -26,15 +26,6 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-#tsparticles {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-    mix-blend-mode: screen;
-}
-
 .container {
     position: relative;
     min-height: 100vh;
@@ -70,10 +61,26 @@ body {
     position: absolute;
     width: 100%;
     height: 100%; 
-    background: url('img/pascoaovo.png') center/cover no-repeat; /* Imagem adicionada */
+    background: linear-gradient(
+        to right,
+        #89CFF0 0% 33.33%,    /* Azul bebê */
+        #98FB98 33.33% 66.66%, /* Verde menta */
+        #FFB6C1 66.66% 100%    /* Rosa claro */
+    );
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 33.33%,
+        0% 33.33%,
+        0% 66.66%,
+        100% 66.66%,
+        100% 100%,
+        0% 100%
+    );
+    
     clip-path: none;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.781);
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
     transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transform-style: preserve-3d;
@@ -194,6 +201,7 @@ body {
     position: relative;
     overflow: hidden;
     margin: 20px;
+    padding-bottom: 100px;
 }
 
 .mensagem.visible {
@@ -245,7 +253,30 @@ body {
     100% { transform: rotate(45deg) translate(50%, 50%); }
 }
 
-/* Efeitos caindo */
+.coelho-animado {
+    position: absolute;
+    width: 120px;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: surgir-coelho 0.8s ease-out 1.5s forwards;
+    z-index: 3;
+}
+
+@keyframes surgir-coelho {
+    from {
+        opacity: 0;
+        transform: translateY(50px) rotate(-15deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(0);
+    }
+}
+
+
+/* Efeitos de icons caindo */
 .falling-element {
     position: fixed;
     top: -50px;
@@ -287,6 +318,7 @@ body {
         width: 90%;
         min-height: 350px;
         padding: 1.5rem;
+        padding-bottom: 80px;
     }
     
     .mensagem h1 {
@@ -299,5 +331,11 @@ body {
 
     .egg-container {
         transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    .coelho-animado {
+        width: 80px;
+        bottom: 10px;
+        right: 10px;
     }
 }

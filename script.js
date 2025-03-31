@@ -1,86 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Configuração das partículas
-    tsParticles.load("tsparticles", {
-        particles: {
-            number: { 
-                value: 30,  // Aumentado para melhor visibilidade
-                density: {
-                    enable: true,
-                    value_area: 800
-                }
-            },
-            color: { 
-                value: ["#ffffff", "#e6f7ff", "#ccebff"] 
-            },
-            shape: { 
-                type: "circle" 
-            },
-            opacity: { 
-                value: 0.7,  // Aumentado
-                random: false 
-            },
-            size: { 
-                value: 15, 
-                random: true 
-            },
-            move: {
-                enable: true,
-                speed: 2,  // Aumentado
-                direction: "bottom",
-                straight: false,  // Permitir movimento natural
-                out_mode: "bounce",  // Alterado para "bounce"
-                bounce: true
-            }
-        },
-        interactivity: { 
-            events: { 
-                onhover: { 
-                    enable: false 
-                }, 
-                onclick: { 
-                    enable: false 
-                } 
-            } 
-        },
-        retina_detect: true,
-        background: {
-            color: "transparent"  // Importante para não cobrir o gradiente
-        }
-    }).catch(error => {
-        console.error("Erro ao carregar partículas:", error);
-    });
-});
-
     // Elementos DOM
     const egg = document.querySelector('.egg');
     const btnQuebrar = document.querySelector('.btn-quebrar');
     const mensagemDiv = document.querySelector('.mensagem');
-
 
     // Animação de quebra do ovo
     btnQuebrar.addEventListener('click', () => {
         document.querySelector('.egg-top').classList.add('quebrado');
         
         setTimeout(() => {
-           document.querySelector('.egg').style.display = 'none';
+            document.querySelector('.egg').style.display = 'none';
             btnQuebrar.style.display = 'none';
             mensagemDiv.classList.add('visible');
             
-             // Efeitos novos
-        startConfetti();
-        startFallingElements();
+              // Mostrar coelho após a mensagem
+        setTimeout(() => {
+            document.querySelector('.coelho-animado').style.display = 'block';
+        }, 1500); // Tempo para aparecer após a mensagem
 
-            // Animação de texto digitado
-       new Typed('#mensagem-digitada', {
-            strings: [
-                'Que esta Páscoa traga muitas alegrias, ^500<br> chocolates e renovação para a sua vida! ^1000\n\nUm coelhinho carregando bênçãos ^500\n chegou até você! 🐰🥚'
-            ],
-            typeSpeed: 40,
-            backSpeed: 0,
-            showCursor: false,
-            smartBackspace: false
-        });
-    }, 1000);
+        
+            // Efeitos novos
+            startConfetti();
+            startFallingElements();
+
+            new Typed('#mensagem-digitada', {
+                strings: [
+                    'Que esta Páscoa traga muitas alegrias, ^500<br> chocolates e renovação para a sua vida! ^1000\n\nUm coelhinho carregando bênçãos ^500\n chegou até você! 🐰🥚'
+                ],
+                typeSpeed: 40,
+                backSpeed: 0,
+                showCursor: false,
+                smartBackspace: false
+            });
+        }, 1000);
     });
 
 
@@ -133,3 +85,4 @@ function startFallingElements() {
         createFallingElement(element.emoji, element.class);
     }, 300);
 }
+});

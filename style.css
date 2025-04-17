@@ -13,8 +13,8 @@ body {
   background: linear-gradient(
     45deg,
     #0A2472,  /* Azul marinho */
-    #599ad3,  /* Azul petróleo */
-    #76c4ee   /* Azul acinzentado */
+    #2468a3,  /* Azul petróleo */
+    #1d7fb4   /* Azul acinzentado */
 );
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
@@ -24,6 +24,55 @@ body {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 50% 50%, 
+            rgba(255,255,255,0.1) 0%, 
+            transparent 60%),
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,0.03) 0px,
+            rgba(255,255,255,0.03) 2px,
+            transparent 2px,
+            transparent 10px);
+    z-index: 1;
+    animation: float 20s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-100vh) rotate(360deg); }
+}
+
+/* Efeito de partículas discretas */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 1%, transparent 2%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 1%, transparent 2%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 1%, transparent 2%);
+    background-size: 300px 300px;
+    z-index: 1;
+    pointer-events: none;
+    animation: particle-move 40s linear infinite;
+}
+
+@keyframes particle-move {
+    from { background-position: 0 0; }
+    to { background-position: 300px 300px; }
 }
 
 .container {
@@ -128,7 +177,7 @@ body {
 .btn-quebrar {
     padding: 1rem 2rem;
     font-size: 1.2rem;
-    background: #FF5252;
+    background: #ff4040;
     color: white;
     border: none;
     border-radius: 30px;
@@ -142,7 +191,7 @@ body {
 .btn-quebrar:hover {
     animation: pulsar 1.5s ease-in-out infinite;
     transform: scale(1.05);
-    background: #FF6B6B;
+    background: #ff5b5b;
 }
 
 .btn-quebrar:active {
@@ -184,7 +233,7 @@ body {
 }
 
 .mensagem {
-    background: rgba(243, 243, 243, 0.95);
+    background: rgba(235, 235, 235, 0.95);
     border-radius: 20px;
     padding: 2rem;
     width: 500px;
@@ -194,7 +243,7 @@ body {
     justify-content: center;
     align-items: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 12px solid rgba(197, 12, 12, 0.932);
     opacity: 0;
     transform: translateY(50px) scale(0.8);
     transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -296,6 +345,40 @@ body {
 .chocolate-fall { animation-duration: 5s; }
 
 
+/* Footer da pagina */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    z-index: 4;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+}
+
+.footer:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.footer a {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+/* final do footer */
+
+
 /* Responsividade para telas médias */
 @media (max-width: 768px) {
     .egg {
@@ -337,5 +420,10 @@ body {
         width: 80px;
         bottom: 10px;
         right: 10px;
+    }
+    
+    .footer {
+        font-size: 0.8rem;
+        padding: 10px 15px;
     }
 }

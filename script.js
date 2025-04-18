@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             new Typed('#mensagem-digitada', {
                 strings: [
-                    'Que esta Páscoa traga muitas alegrias, ^500<br> chocolates e renovação para a sua vida! ^1000\n\nUm coelhinho carregando bênçãos ^500\n chegou até você! 🐰🥚'
+                    'Que esta Páscoa traga muitas alegrias, ^500<br> chocolates e renovação para a sua vida! ^1000\n\nUm coelhinho carregando bênçãos ^500\n chegou até você!'
                 ],
                 typeSpeed: 40,
                 backSpeed: 0,
